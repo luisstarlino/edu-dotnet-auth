@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace auth.api.Controllers
+namespace EduAuth.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]

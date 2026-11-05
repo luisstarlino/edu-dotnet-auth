@@ -1,1 +1,3 @@
-<Solution />
+<Solution>
+  <Project Path="src/EduAuth.Api/EduAuth.Api.csproj" />
+</Solution>

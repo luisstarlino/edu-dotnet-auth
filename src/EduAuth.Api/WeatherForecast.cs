@@ -1,4 +1,4 @@
-namespace auth.api
+namespace EduAuth.Api
 {
     public class WeatherForecast
     {
