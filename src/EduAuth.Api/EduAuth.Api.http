@@ -1,6 +1,6 @@
-@auth.api_HostAddress = http://localhost:5163
+@EduAuth.Api_HostAddress = http://localhost:5163
 
-GET {{auth.api_HostAddress}}/weatherforecast/
+GET {{EduAuth.Api_HostAddress}}/health
 Accept: application/json
 
 ###
