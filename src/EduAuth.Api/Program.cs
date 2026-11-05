@@ -17,3 +17,6 @@ app.UseHttpsRedirection();
 app.MapGet("/health", () => new { status = "ok" });
 
 app.Run();
+
+// Exposed so integration tests can boot the app via WebApplicationFactory<Program>.
+public partial class Program;
