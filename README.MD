@@ -169,7 +169,9 @@ dotnet ef database update --project src/EduAuth.Api
 dotnet run --project src/EduAuth.Api
 ```
 
-Then open **`https://localhost:5001/scalar`** to explore and test every endpoint. 🎉
+Then open **`https://localhost:7215/scalar`** (or `http://localhost:5163/scalar`) to
+explore and test every endpoint in the browser with **Scalar**, the interactive API
+UI. It's wired up in development only. 🎉
 
 > [!TIP]
 > Prefer testing from the editor? Open `requests.http` in VS Code (REST Client extension) or Visual Studio and click **Send Request**.
