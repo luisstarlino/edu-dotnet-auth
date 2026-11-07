@@ -4,3 +4,6 @@ obj/
 *.user
 TestResults/
 publish/
+*.db
+*.db-shm
+*.db-wal

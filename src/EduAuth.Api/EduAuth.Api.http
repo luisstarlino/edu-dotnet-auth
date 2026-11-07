@@ -4,3 +4,8 @@ GET {{EduAuth.Api_HostAddress}}/health
 Accept: application/json
 
 ###
+
+GET {{EduAuth.Api_HostAddress}}/users
+Accept: application/json
+
+###
