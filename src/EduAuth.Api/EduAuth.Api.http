@@ -9,3 +9,22 @@ GET {{EduAuth.Api_HostAddress}}/users
 Accept: application/json
 
 ###
+
+POST {{EduAuth.Api_HostAddress}}/passwords/hash
+Content-Type: application/json
+
+{
+  "password": "s3cret"
+}
+
+###
+
+POST {{EduAuth.Api_HostAddress}}/passwords/verify
+Content-Type: application/json
+
+{
+  "password": "s3cret",
+  "hash": "paste-a-hash-from-the-hash-request-here"
+}
+
+###
