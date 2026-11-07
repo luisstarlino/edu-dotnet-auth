@@ -14,7 +14,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 // Module 00: a single, unauthenticated endpoint to prove the API runs.
-app.MapGet("/health", () => new { status = "ok" });
+app.MapGet("/home", () => new { status = "ok", message = "API is running! Welcome my friend!!!" });
 
 app.Run();
 

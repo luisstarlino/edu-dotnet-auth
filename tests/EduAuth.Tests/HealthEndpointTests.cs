@@ -12,7 +12,7 @@ public class HealthEndpointTests(WebApplicationFactory<Program> factory)
     [Fact]
     public async Task Health_returns_200_with_status_ok()
     {
-        var response = await _client.GetAsync("/health");
+        var response = await _client.GetAsync("/home");
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
