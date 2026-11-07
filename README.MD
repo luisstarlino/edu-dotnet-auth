@@ -68,14 +68,16 @@ Each module lives in its own branch, so students can follow the evolution of the
 
 | # | Module | Branch | Topics |
 |:-:|--------|--------|--------|
-| 00 | 🧱 **Presentation** | `module-00-setup-minimal` | Project setup, Minimal APIs|
-| 01 | 🧱 **Foundations** | `module-01-foundations` | Project setup, Minimal APIs, EF Core |
+| 00 | 🧱 **Presentation** | `module-00-setup-minimal` | Auth vs authz, course roadmap, first run |
+| 01 | 🧱 **Foundations** | `module-01-foundations` | Minimal APIs, EF Core, SQLite |
 | 02 | 🔒 **Passwords** | `module-02-passwords` | Hashing, salting, why never plain text |
 | 03 | 👤 **Identity** | `module-03-identity` | Register, login, user store |
 | 04 | 🎫 **JWT** | `module-04-jwt` | Token anatomy, signing, validation |
 | 05 | 🔄 **Refresh Tokens** | `module-05-refresh-tokens` | Rotation, expiration, revocation |
 | 06 | 👑 **Roles & Policies** | `module-06-authorization` | Roles, claims, custom policies |
-| 07 | 🌐 **External Login** | `module-07-external-login` | OAuth 2.0 with Google / GitHub |
+| 07 | 🛡️ **Security Hardening** | `module-07-security` | Rate limiting, account lockout, brute-force, timing attacks |
+| 08 | 🌐 **External Login** | `module-08-external-login` | OAuth 2.0 vs OIDC with Google / GitHub |
+| 09 | 🧪 **Testing** | `module-09-testing` | WebApplicationFactory, integration tests, faking auth |
 | ✅ | 🎓 **Final Version** | `main` | Everything together |
 
 ```bash
