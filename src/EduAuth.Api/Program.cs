@@ -1,4 +1,5 @@
 using EduAuth.Api.Data;
+using EduAuth.Api.Entities;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,7 +17,19 @@ var app = builder.Build();
 // exists on first run. Not production-safe — see docs/module-01.md.
 using (var scope = app.Services.CreateScope())
 {
-    scope.ServiceProvider.GetRequiredService<AppDbContext>().Database.Migrate();
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+
+    // Module 01: seed a couple of users when the database is empty, so GET /users
+    // has something to show. Idempotent — the check means re-running never
+    // duplicates them.
+    if (!db.Users.Any())
+    {
+        db.Users.AddRange(
+            new User { Email = "luis@edu.dev" },
+            new User { Email = "starlino@edu.dev" });
+        db.SaveChanges();
+    }
 }
 
 // Configure the HTTP request pipeline.

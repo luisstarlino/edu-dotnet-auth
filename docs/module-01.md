@@ -51,12 +51,40 @@ That generated the `Migrations/` folder describing a `Users` table. The app
 applies pending migrations **at startup**, so the SQLite file (`eduauth.db`) is
 created automatically the first time you run it.
 
+## Seeding
+
+An empty database is a boring demo. **Seeding** means putting some initial data
+in place so the app has something to work with. We do it at startup, right after
+the migration runs:
+
+```csharp
+db.Database.Migrate();
+
+if (!db.Users.Any())
+{
+    db.Users.AddRange(
+        new User { Email = "luis@edu.dev" },
+        new User { Email = "starlino@edu.dev" });
+    db.SaveChanges();
+}
+```
+
+The `if (!db.Users.Any())` check is what makes this **idempotent**: it only
+inserts when the table is empty, so restarting the app never creates duplicates.
+That's the whole idea of a seed — *inject the rows that aren't there yet, and
+leave the rest alone*.
+
+> There are other ways to seed (EF Core's `HasData` bakes the data into a
+> migration; EF Core 9+ has a `UseSeeding` hook). We use the plain startup check
+> because it reads top-to-bottom and also shows `AddRange` + `SaveChanges`.
+
 ## What this module ships
 
 - EF Core + the SQLite provider wired into the Minimal API.
 - An `AppDbContext` with a `Users` set.
 - The `User` entity and its initial migration.
-- `GET /users` → `200 OK` with a JSON array of users (empty for now).
+- A startup **seed** that adds two users to an empty database.
+- `GET /users` → `200 OK` with a JSON array of the seeded users.
 
 ## Run it
 
@@ -67,14 +95,15 @@ dotnet tool install --global dotnet-ef
 dotnet run --project src/EduAuth.Api
 ```
 
-The database is created on startup. Then list the users:
+The database is created and seeded on startup. Then list the users:
 
 ```bash
 curl http://localhost:5163/users
-# []
+# [{"id":"...","email":"luis@edu.dev","createdAt":"..."},
+#  {"id":"...","email":"starlino@edu.dev","createdAt":"..."}]
 ```
 
-Empty, because nothing inserts users yet — that starts in module 03. Prefer the
+Real registration (users creating themselves) starts in module 03. Prefer the
 editor? Open `src/EduAuth.Api/EduAuth.Api.http` and send the `GET /users`
 request.
 
