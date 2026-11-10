@@ -28,3 +28,24 @@ Content-Type: application/json
 }
 
 ###
+
+POST {{EduAuth.Api_HostAddress}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "new@edu.dev",
+  "password": "s3cret"
+}
+
+###
+
+# Seeded demo user — password from docs/module-03.md
+POST {{EduAuth.Api_HostAddress}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "luis@edu.dev",
+  "password": "password123"
+}
+
+###
