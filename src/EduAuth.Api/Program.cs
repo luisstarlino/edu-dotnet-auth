@@ -34,7 +34,7 @@ using (var scope = app.Services.CreateScope())
     if (!db.Users.Any())
     {
         var hasher = scope.ServiceProvider.GetRequiredService<IPasswordHasher>();
-        var seedHash = hasher.Hash("password123");
+        var seedHash = hasher.Hash("edu-test");
         db.Users.AddRange(
             new User { Email = "luis@edu.dev", PasswordHash = seedHash },
             new User { Email = "starlino@edu.dev", PasswordHash = seedHash });
@@ -94,6 +94,7 @@ app.MapPost("/auth/login", async (LoginRequest req, AppDbContext db, IPasswordHa
 
 app.Run();
 
+// Request DTOs: records give value equality and a concise constructor for binding JSON bodies.
 record HashRequest(string Password);
 record VerifyRequest(string Password, string Hash);
 record RegisterRequest(string Email, string Password);

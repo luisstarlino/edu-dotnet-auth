@@ -7,6 +7,14 @@ public class BcryptPasswordHasher : IPasswordHasher
 {
     private const int WorkFactor = 12;
 
+    // Example output for Hash("password123"):
+    //   $2a$12$eImiTXuWVxfM37uY4JANjQ.k3Rz3ZbKqXwq7Yx1yJ3K8pQ2n5dC6e
+    //    |  |  |                     |
+    //    |  |  |                     +-- 31 chars: salt (first 22) + hash
+    //    |  |  +-- cost / work factor (12)
+    //    |  +-- algorithm version (2a)
+    //    +-- bcrypt marker ($)
+    // The salt is embedded, so every call produces a different string for the same password.
     public string Hash(string password) =>
         BCrypt.Net.BCrypt.HashPassword(password, WorkFactor);
 
